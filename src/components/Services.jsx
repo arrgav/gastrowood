@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { GlassWater, UtensilsCrossed, CalendarHeart, ChefHat, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import Modal from './Modal';
 
 const Services = ({ preview = false }) => {
@@ -11,7 +10,7 @@ const Services = ({ preview = false }) => {
     {
       title: 'Свадебный кейтеринг',
       icon: <CalendarHeart size={32} />,
-      img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80',
+      img: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80&auto=format&fit=crop',
       description: 'Безупречная организация вашего главного дня с элегантной подачей и авторским меню.',
       details: [
         'Разработка индивидуального концепта меню под стилистику свадьбы',
@@ -26,7 +25,7 @@ const Services = ({ preview = false }) => {
     {
       title: 'Корпоративные мероприятия',
       icon: <UtensilsCrossed size={32} />,
-      img: 'https://images.unsplash.com/photo-1511795409834-432f7b172871?w=800&q=80',
+      img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80&auto=format&fit=crop',
       description: 'От небольших презентаций до масштабных гала-ужинов компаний.',
       details: [
         'Разнообразные форматы: от фуршета на 50 до банкета на 1000 персон',
@@ -40,11 +39,46 @@ const Services = ({ preview = false }) => {
     },
     {
       title: 'Выездной бар',
-      description: 'Авторские коктейли, ароматный кофе и свежие смузи от профессиональных барменов.',
-      icon: <ChefHat size={40} strokeWidth={1.5} />,
-      img: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=800&q=80&auto=format&fit=crop'
+      icon: <GlassWater size={32} />,
+      img: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80&auto=format&fit=crop',
+      description: 'Авторские коктейли, пирамиды шампанского и профессиональные бармены на вашем мероприятии.',
+      details: [
+        'Классическая, молекулярная или тематическая барная карта',
+        'Мобильные барные стойки разного стиля и конфигурации',
+        'Эффектное бармен-шоу и интерактив с гостями',
+        'Станции авторских лимонадов, смузи и детокс-напитков',
+        'Крафтовый лед, премиальное стекло и свежие ингредиенты',
+        'Услуги профессионального сомелье для подбора вин'
+      ],
+      price: 'от 1 500 ₽ / персона'
+    },
+    {
+      title: "Chef's Table & Частные ужины",
+      icon: <ChefHat size={32} />,
+      img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop',
+      description: 'Эксклюзивный формат с приготовлением блюд бренд-шефом перед гостями.',
+      details: [
+        'Гастрономический сет из 5-7 подач от именитого шеф-повара',
+        'Полное погружение в кулинарный процесс с комментариями шефа',
+        'Фуд-пейринг: подбор винного сопровождения к каждому блюду',
+        'Камерная атмосфера: организация в апартаментах, яхте или лофте',
+        'Использование редких фермерских продуктов и деликатесов',
+        'Эксклюзивная сервировка: фарфор, хрусталь, столовое серебро'
+      ],
+      price: 'от 10 000 ₽ / персона'
     }
   ];
+
+  const displayedServices = preview ? services.slice(0, 2) : services;
+
+  const openTelegram = (service) => {
+    const text = encodeURIComponent(
+      `Здравствуйте! Хочу узнать подробнее об услуге "${service.title}".\n` +
+      `Ориентировочный бюджет: ${service.price}.\n` +
+      `Жду обратной связи!`
+    );
+    window.open(`https://t.me/Damir_Sultangaliev?text=${text}`, '_blank');
+  };
 
   return (
     <section id="services" className="section" style={{ backgroundColor: 'transparent' }}>
@@ -65,7 +99,7 @@ const Services = ({ preview = false }) => {
         </motion.div>
 
         <div className="grid-2">
-          {services.map((service, index) => (
+          {displayedServices.map((service, index) => (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -86,46 +120,22 @@ const Services = ({ preview = false }) => {
                 cursor: 'pointer'
               }}
             >
-              {/* Card Image Background */}
               <div 
                 className="service-img"
                 style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
+                  position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
                   backgroundImage: `url(${service.img})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  transition: 'transform 0.5s ease',
-                  zIndex: 0
+                  backgroundSize: 'cover', backgroundPosition: 'center',
+                  transition: 'transform 0.5s ease', zIndex: 0
                 }}
               />
-              
-              {/* Gradient overlay for readability */}
               <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
+                position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
                 background: 'linear-gradient(to top, rgba(11,28,24,0.9) 0%, rgba(11,28,24,0.2) 50%, transparent 100%)',
                 zIndex: 1
               }} />
-
-              {/* Content */}
-              <div style={{
-                position: 'relative',
-                zIndex: 2,
-                padding: '2.5rem',
-                color: 'var(--color-surface)'
-              }}>
-                <div style={{ 
-                  color: 'var(--color-wood-light)',
-                  marginBottom: '1rem',
-                  display: 'inline-block'
-                }}>
+              <div style={{ position: 'relative', zIndex: 2, padding: '2.5rem', color: 'var(--color-surface)' }}>
+                <div style={{ color: 'var(--color-wood-light)', marginBottom: '1rem', display: 'inline-block' }}>
                   {service.icon}
                 </div>
                 <h3 style={{ color: 'var(--color-surface)', fontSize: '1.75rem', marginBottom: '0.5rem' }}>
@@ -135,12 +145,8 @@ const Services = ({ preview = false }) => {
                   {service.description}
                 </p>
                 <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  fontWeight: 600,
-                  color: 'var(--color-wood-light)',
-                  transition: 'color var(--transition-fast)'
+                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                  fontWeight: 600, color: 'var(--color-wood-light)', transition: 'color var(--transition-fast)'
                 }} className="service-link">
                   Подробнее <span style={{ fontSize: '1.2em' }}>→</span>
                 </div>
@@ -172,21 +178,17 @@ const Services = ({ preview = false }) => {
             </ul>
 
             <div style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'space-between',
-              paddingTop: '1.5rem',
-              borderTop: '1px solid rgba(0,0,0,0.1)',
-              flexWrap: 'wrap',
-              gap: '1rem'
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              paddingTop: '1.5rem', borderTop: '1px solid rgba(0,0,0,0.1)',
+              flexWrap: 'wrap', gap: '1rem'
             }}>
               <div>
                 <span style={{ display: 'block', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Стоимость:</span>
                 <strong style={{ fontSize: '1.5rem', color: 'var(--color-primary)' }}>{selectedService.price}</strong>
               </div>
-              <Link to="/order" className="btn btn-primary" style={{ padding: '0.75rem 2rem' }}>
-                Рассчитать смету
-              </Link>
+              <button onClick={() => openTelegram(selectedService)} className="btn btn-primary" style={{ padding: '0.75rem 2rem' }}>
+                Заказать в Telegram
+              </button>
             </div>
           </div>
         )}

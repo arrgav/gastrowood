@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import Modal from './Modal';
 
 const Menu = ({ preview = false }) => {
@@ -10,10 +9,11 @@ const Menu = ({ preview = false }) => {
   const categories = [
     {
       title: 'Coffee Break',
+      img: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=400&fit=crop&auto=format',
       desc: 'Легкие закуски и бодрящие напитки для деловых встреч и перерывов.',
       details: [
         'Свежая мини-выпечка (круассаны, даниши)',
-        'Брускетты с лососем и ростбидом',
+        'Брускетты с лососем и ростбифом',
         'Ассорти мини-кишей',
         'Сезонные фрукты и ягоды',
         'Свежесваренный кофе (Арабика 100%)',
@@ -23,6 +23,7 @@ const Menu = ({ preview = false }) => {
     },
     {
       title: 'Buffet',
+      img: 'https://images.unsplash.com/photo-1555244162-803834f70033?w=600&h=400&fit=crop&auto=format',
       desc: 'Изысканный фуршет с широким ассортиментом холодных и горячих закусок.',
       details: [
         'Канапе с деликатесами и морепродуктами',
@@ -36,6 +37,7 @@ const Menu = ({ preview = false }) => {
     },
     {
       title: 'Banquet',
+      img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop&auto=format',
       desc: 'Классический гастрономический ужин с премиальным обслуживанием.',
       details: [
         'Индивидуальная эстетичная сервировка стола',
@@ -49,6 +51,7 @@ const Menu = ({ preview = false }) => {
     },
     {
       title: 'Барбекю (BBQ)',
+      img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=400&fit=crop&auto=format',
       desc: 'Блюда на открытом огне для загородных мероприятий.',
       details: [
         'Стейки, шашлычки и морепродукты на гриле',
@@ -62,6 +65,7 @@ const Menu = ({ preview = false }) => {
     },
     {
       title: 'Коктейль',
+      img: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&h=400&fit=crop&auto=format',
       desc: 'Элегантный формат для светских раутов и вечеринок.',
       details: [
         'Только finger-food (без приборов)',
@@ -75,6 +79,7 @@ const Menu = ({ preview = false }) => {
     },
     {
       title: 'Детское меню',
+      img: 'https://images.unsplash.com/photo-1513442542250-854d436a73f2?w=600&h=400&fit=crop&auto=format',
       desc: 'Яркие, полезные и вкусные блюда, которые точно понравятся детям.',
       details: [
         'Мини-пиццы и цветные бургеры',
@@ -87,6 +92,19 @@ const Menu = ({ preview = false }) => {
       price: 'от 1 500 ₽ / персона'
     }
   ];
+
+  const displayedCategories = preview ? categories.slice(0, 3) : categories;
+
+  const openTelegram = (cat) => {
+    const text = encodeURIComponent(
+      `Здравствуйте! Интересует меню "${cat.title}".
+` +
+      `Ориентировочная стоимость: ${cat.price}.
+` +
+      `Жду обратной связи!`
+    );
+    window.open(`https://t.me/Damir_Sultangaliev?text=${text}`, '_blank');
+  };
 
   return (
     <section id="menu" className="section" style={{ backgroundColor: 'transparent' }}>
@@ -115,7 +133,7 @@ const Menu = ({ preview = false }) => {
         </div>
 
         <div className="grid-3">
-          {categories.map((cat, idx) => (
+          {displayedCategories.map((cat, idx) => (
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -137,21 +155,11 @@ const Menu = ({ preview = false }) => {
               <div 
                 style={{
                   height: '250px',
-                  backgroundColor: 'rgba(213, 203, 184, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  overflow: 'hidden'
                 }}
               >
                 <img 
-                  src={`https://images.unsplash.com/photo-${[
-                    '1495147466023-06a92429b709', // coffee
-                    '1555243896-c709bfa0b564', // buffet
-                    '1414253152815-586790db86b7', // banquet
-                    '1555939594-58d7cb561ad1', // bbq
-                    '1551024739-1ad88f0a1e35', // cocktail 
-                    '1513442542250-854d436a73f2'  // kids
-                  ][idx]}?w=600&h=400&fit=crop`}
+                  src={cat.img}
                   alt={cat.title}
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
@@ -204,9 +212,9 @@ const Menu = ({ preview = false }) => {
                 <span style={{ display: 'block', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>Ориентировочная стоимость:</span>
                 <strong style={{ fontSize: '1.5rem', color: 'var(--color-primary)' }}>{selectedCategory.price}</strong>
               </div>
-              <Link to="/order" className="btn btn-primary" style={{ padding: '0.75rem 2rem' }}>
-                Рассчитать для меня
-              </Link>
+              <button onClick={() => openTelegram(selectedCategory)} className="btn btn-primary" style={{ padding: '0.75rem 2rem' }}>
+                Заказать в Telegram
+              </button>
             </div>
           </div>
         )}

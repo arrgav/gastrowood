@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import InteractiveBackground from './components/InteractiveBackground';
 
 // Pages
 import Home from './pages/Home';
@@ -21,6 +22,7 @@ function App() {
   return (
     <BrowserRouter basename="/gastrowood/">
       <ScrollToTop />
+      <InteractiveBackground />
       <Navbar />
       <main style={{ minHeight: 'calc(100vh - 200px)' }}>
         <Routes>
