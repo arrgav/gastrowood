@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Calculator = () => {
   const [guests, setGuests] = useState(50);
@@ -36,21 +37,35 @@ const Calculator = () => {
   };
 
   return (
-    <section id="calculator" className="section" style={{ backgroundColor: 'var(--color-primary-light)' }}>
+    <section id="calculator" className="section" style={{ backgroundColor: 'transparent' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: 'center', marginBottom: '3rem' }}
+        >
           <span className="section-subtitle">Оценка бюджета</span>
           <h2 style={{ color: 'var(--color-primary)' }}>Калькулятор стоимости</h2>
-        </div>
+        </motion.div>
 
-        <div style={{
-          maxWidth: '800px',
-          margin: '0 auto',
-          background: 'var(--color-surface)',
-          padding: '2.5rem',
-          borderRadius: 'var(--radius-lg)',
-          boxShadow: 'var(--shadow-lg)'
-        }}>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          style={{
+            maxWidth: '800px',
+            margin: '0 auto',
+            background: 'rgba(255, 255, 255, 0.8)',
+            backdropFilter: 'blur(16px)',
+            padding: '2.5rem',
+            borderRadius: 'var(--radius-lg)',
+            boxShadow: 'var(--shadow-lg)',
+            border: '1px solid rgba(255,255,255,0.4)'
+          }}
+        >
           
           {/* Формат */}
           <div style={{ marginBottom: '2rem' }}>
@@ -143,7 +158,7 @@ const Calculator = () => {
             </button>
           </div>
           
-        </div>
+        </motion.div>
       </div>
     </section>
   );

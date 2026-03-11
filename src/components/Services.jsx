@@ -1,5 +1,7 @@
 import React from 'react';
 import { GlassWater, UtensilsCrossed, CalendarHeart, ChefHat } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const services = [
@@ -30,20 +32,30 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
+    <section id="services" className="section" style={{ backgroundColor: 'transparent' }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }} className="fade-in-up">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          style={{ textAlign: 'center', marginBottom: '4rem' }}
+        >
           <span className="section-subtitle">Наши форматы</span>
           <h2 style={{ color: 'var(--color-primary)' }}>Безупречность в каждой детали</h2>
           <p style={{ maxWidth: '600px', margin: '0 auto', color: 'var(--color-text-muted)' }}>
             Мы создаем атмосферу и вкус, которые идеально соответствуют вашему мероприятию,
             от камерных встреч до масштабных праздников.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid-2">
           {services.map((service, index) => (
-            <div 
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               key={index} 
               className="service-card"
               style={{
@@ -55,7 +67,6 @@ const Services = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'flex-end',
-                transition: 'transform var(--transition-normal)'
               }}
             >
               {/* Card Image Background */}
@@ -106,7 +117,7 @@ const Services = () => {
                 <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '1.5rem', fontSize: '1rem' }}>
                   {service.description}
                 </p>
-                <a href="#calculator" style={{
+                <Link to="/order" style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.5rem',
@@ -115,9 +126,9 @@ const Services = () => {
                   transition: 'color var(--transition-fast)'
                 }} className="service-link">
                   Рассчитать <span style={{ fontSize: '1.2em' }}>→</span>
-                </a>
+                </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
   const categories = [
@@ -21,33 +23,49 @@ const Menu = () => {
   ];
 
   return (
-    <section id="menu" className="section" style={{ backgroundColor: 'var(--color-surface)' }}>
+    <section id="menu" className="section" style={{ backgroundColor: 'transparent' }}>
       <div className="container">
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem', flexWrap: 'wrap', gap: '2rem' }}>
-          <div className="fade-in-up">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <span className="section-subtitle">Гастрономия</span>
             <h2 style={{ color: 'var(--color-primary)', margin: 0 }}>Наше Меню</h2>
-          </div>
-          <a href="#calculator" className="btn btn-secondary fade-in-up delay-100">
-            Скачать PDF меню
-          </a>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Link to="/order" className="btn btn-secondary">
+              Заказать дегустацию
+            </Link>
+          </motion.div>
         </div>
 
         <div className="grid-3">
           {categories.map((cat, idx) => (
-            <div 
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
               key={idx}
               style={{
                 borderRadius: 'var(--radius-lg)',
                 overflow: 'hidden',
-                backgroundColor: 'var(--color-bg)',
+                backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                backdropFilter: 'blur(10px)',
                 boxShadow: 'var(--shadow-sm)',
                 transition: 'transform var(--transition-normal), box-shadow var(--transition-normal)',
-                cursor: 'pointer',
-                animationDelay: `${idx * 150}ms`
+                cursor: 'pointer'
               }}
-              className="menu-card fade-in-up"
+              className="menu-card"
             >
               <div 
                 style={{
@@ -67,7 +85,7 @@ const Menu = () => {
                   {cat.desc}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

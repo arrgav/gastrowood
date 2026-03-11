@@ -1,23 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Menu from './components/Menu';
-import Calculator from './components/Calculator';
 import Footer from './components/Footer';
+
+// Pages
+import Home from './pages/Home';
+import ServicesPage from './pages/ServicesPage';
+import MenuPage from './pages/MenuPage';
+import OrderPage from './pages/OrderPage';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 function App() {
   return (
-    <>
+    <BrowserRouter basename="/gastrowood/">
+      <ScrollToTop />
       <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <Menu />
-        <Calculator />
+      <main style={{ minHeight: 'calc(100vh - 200px)' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/order" element={<OrderPage />} />
+        </Routes>
       </main>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

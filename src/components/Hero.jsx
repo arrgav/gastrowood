@@ -1,5 +1,7 @@
 import React from 'react';
 import { ArrowRight, Leaf } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -36,18 +38,25 @@ const Hero = () => {
         zIndex: -1
       }} />
 
-      <div className="container fade-in-up" style={{
-        position: 'relative',
-        zIndex: 1,
-        color: 'var(--color-surface)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        gap: '1.5rem',
-        maxWidth: '800px',
-        margin: '0 auto',
-        paddingTop: '4rem'
-      }}>
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="container" 
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          color: 'var(--color-surface)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          gap: '1.5rem',
+          maxWidth: '800px',
+          margin: '0 auto',
+          paddingTop: '4rem'
+        }}
+      >
         <div style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -88,23 +97,23 @@ const Hero = () => {
         </p>
 
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <a href="#menu" className="btn btn-primary" style={{
+          <Link to="/menu" className="btn btn-primary" style={{
             backgroundColor: 'var(--color-wood-light)',
             color: 'var(--color-text)',
             boxShadow: '0 4px 15px rgba(213, 203, 184, 0.4)'
           }}>
             Смотреть меню <ArrowRight size={20} />
-          </a>
-          <a href="#calculator" className="btn" style={{
+          </Link>
+          <Link to="/order" className="btn" style={{
             backgroundColor: 'rgba(255,255,255,0.1)',
             backdropFilter: 'blur(10px)',
             color: 'var(--color-surface)',
             border: '1px solid rgba(255,255,255,0.3)'
           }}>
             Рассчитать стоимость
-          </a>
+          </Link>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
