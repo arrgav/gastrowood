@@ -5,7 +5,7 @@ const Calculator = () => {
   const [guests, setGuests] = useState(50);
   const [format, setFormat] = useState('furshet');
   const [needWaiters, setNeedWaiters] = useState(true);
-  const telegramUsername = 'your_username'; // PLACEHOLDER
+  const telegramUsername = 'Damir_Sultangaliev';
 
   const formats = {
     coffee: { name: 'Кофе-брейк', price: 1200 },

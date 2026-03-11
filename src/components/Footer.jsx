@@ -37,7 +37,7 @@ const Footer = () => {
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', color: 'rgba(255,255,255,0.7)' }}>
               <li>Москва, Россия</li>
               <li><a href="mailto:hello@gastrowood.ru" className="footer-link">hello@gastrowood.ru</a></li>
-              <li><a href="https://t.me/your_username" target="_blank" rel="noreferrer" className="footer-link" style={{ color: 'var(--color-wood-light)', fontWeight: 500 }}>Написать в Telegram</a></li>
+              <li><a href="https://t.me/Damir_Sultangaliev" target="_blank" rel="noreferrer" className="footer-link" style={{ color: 'var(--color-wood-light)', fontWeight: 500 }}>Написать в Telegram</a></li>
             </ul>
           </div>
         </div>
