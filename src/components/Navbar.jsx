@@ -4,7 +4,6 @@ import { Menu as MenuIcon, X, Phone } from 'lucide-react';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
