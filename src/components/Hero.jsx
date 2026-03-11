@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArrowRight, Leaf } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -90,21 +89,21 @@ const Hero = () => {
         </p>
 
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <Link to="/menu" className="btn btn-primary" style={{
+          <a href="#menu" className="btn btn-primary" style={{
             backgroundColor: 'var(--color-wood-light)',
             color: 'var(--color-text)',
             boxShadow: '0 4px 15px rgba(213, 203, 184, 0.4)'
           }}>
             Смотреть меню <ArrowRight size={20} />
-          </Link>
-          <Link to="/order" className="btn" style={{
+          </a>
+          <a href="#calculator" className="btn" style={{
             backgroundColor: 'rgba(255,255,255,0.1)',
             backdropFilter: 'blur(10px)',
             color: 'var(--color-surface)',
             border: '1px solid rgba(255,255,255,0.3)'
           }}>
             Рассчитать стоимость
-          </Link>
+          </a>
         </div>
       </motion.div>
     </section>

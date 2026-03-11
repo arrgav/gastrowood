@@ -1,41 +1,29 @@
-import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import InteractiveBackground from './components/InteractiveBackground';
 
-// Pages
-import Home from './pages/Home';
-import ServicesPage from './pages/ServicesPage';
-import MenuPage from './pages/MenuPage';
-import OrderPage from './pages/OrderPage';
-
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
+import Hero from './components/Hero';
+import Services from './components/Services';
+import Menu from './components/Menu';
+import Calculator from './components/Calculator';
 
 function App() {
   return (
-    <HashRouter>
-      <ScrollToTop />
+    <>
       <InteractiveBackground />
       <Navbar />
       <main style={{ minHeight: 'calc(100vh - 200px)' }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/menu" element={<MenuPage />} />
-          <Route path="/order" element={<OrderPage />} />
-        </Routes>
+        <Hero />
+        <Services />
+        <Menu />
+        <Calculator />
       </main>
       <Footer />
-    </HashRouter>
+    </>
   );
 }
 
 export default App;
+
 

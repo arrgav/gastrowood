@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -13,9 +12,9 @@ const Footer = () => {
         }}>
           {/* Brand */}
           <div>
-            <Link to="/" style={{ display: 'inline-block', fontWeight: 700, fontSize: '1.75rem', marginBottom: '1rem', color: 'var(--color-surface)' }}>
+            <a href="#hero" style={{ display: 'inline-block', fontWeight: 700, fontSize: '1.75rem', marginBottom: '1rem', color: 'var(--color-surface)' }}>
               <span style={{ color: 'var(--color-wood-light)' }}>Gastro</span>Wood
-            </Link>
+            </a>
             <p style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '300px' }}>
               Премиальный кейтеринг в Москве. Искусство вкуса и эстетика природы для вашего безупречного события.
             </p>
@@ -25,9 +24,9 @@ const Footer = () => {
           <div>
             <h4 style={{ color: 'var(--color-surface)', marginBottom: '1.5rem', fontSize: '1.25rem' }}>Навигация</h4>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><Link to="/services" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }} className="footer-link">Услуги</Link></li>
-              <li><Link to="/menu" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }} className="footer-link">Меню</Link></li>
-              <li><Link to="/order" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }} className="footer-link">Калькулятор стоимости</Link></li>
+              <li><a href="#services" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }} className="footer-link">Услуги</a></li>
+              <li><a href="#menu" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }} className="footer-link">Меню</a></li>
+              <li><a href="#calculator" style={{ color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }} className="footer-link">Калькулятор стоимости</a></li>
             </ul>
           </div>
 
@@ -55,8 +54,8 @@ const Footer = () => {
         }}>
           <p>© {new Date().getFullYear()} GastroWood Catering. Все права защищены.</p>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
-            <Link to="/" className="footer-link">Политика конфиденциальности</Link>
-            <Link to="/" className="footer-link">Условия использования</Link>
+            <a href="#hero" className="footer-link">Политика конфиденциальности</a>
+            <a href="#hero" className="footer-link">Условия использования</a>
           </div>
         </div>
       </div>

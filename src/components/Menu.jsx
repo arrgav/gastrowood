@@ -126,9 +126,9 @@ const Menu = ({ preview = false }) => {
             viewport={{ once: true, margin: "0px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link to="/order" className="btn btn-secondary">
+            <a href="#calculator" className="btn btn-secondary">
               Заказать дегустацию
-            </Link>
+            </a>
           </motion.div>
         </div>
 
