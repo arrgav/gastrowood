@@ -11,37 +11,30 @@ const Hero = () => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      zIndex: 1
     }}>
       {/* Background Image */}
       <div style={{
         position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        top: 0, left: 0, right: 0, bottom: 0,
         backgroundImage: 'url("https://images.unsplash.com/photo-1555244162-803834f70033?w=1920&q=80&auto=format&fit=crop")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
         zIndex: -2
       }} />
       
       {/* Overlay */}
       <div style={{
         position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        top: 0, left: 0, right: 0, bottom: 0,
         background: 'linear-gradient(to right, rgba(11, 28, 24, 0.9), rgba(11, 28, 24, 0.6))',
         zIndex: -1
       }} />
 
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="container" 
         style={{
