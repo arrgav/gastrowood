@@ -35,15 +35,15 @@ const Modal = ({ isOpen, onClose, title, children }) => {
             }}
           />
           <motion.div
-            initial={{ opacity: 0, y: 60, scale: 0.95 }}
-            animate={{ opacity: 1, y: '-50%', scale: 1 }}
-            exit={{ opacity: 0, y: 60, scale: 0.95 }}
+            initial={{ opacity: 0, x: '-50%', y: '-40%', scale: 0.95 }}
+            animate={{ opacity: 1, x: '-50%', y: '-50%', scale: 1 }}
+            exit={{ opacity: 0, x: '-50%', y: '-40%', scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             style={{
               position: 'fixed',
               top: '50%',
               left: '50%',
-              transform: 'translate(-50%, -50%)',
+
               width: '90%',
               maxWidth: '800px',
               maxHeight: '90vh',
